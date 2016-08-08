@@ -3,14 +3,12 @@ SuperStrict
 Framework ODD.GLOdd2D
 ?Win32
 Import ODD.D3D9Odd2D
-Import ODD.D3D7Odd2D
 ?
 Import brl.random
 
 SetGraphicsDriver GLOdd2DDriver()
 'Uncomment a driver to try it (Windows only)
 'SetGraphicsDriver D3D9Odd2DDriver()
-'SetGraphicsDriver D3D7Odd2DDriver()
 
 Graphics 800,600
 SetVirtualResolution 400,300
