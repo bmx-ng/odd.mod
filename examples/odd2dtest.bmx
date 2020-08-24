@@ -4,7 +4,7 @@ Framework ODD.GLOdd2D
 ?Win32
 Import ODD.D3D9Odd2D
 ?
-Import brl.random
+Import brl.RandomDefault
 
 SetGraphicsDriver GLOdd2DDriver()
 'Uncomment a driver to try it (Windows only)
