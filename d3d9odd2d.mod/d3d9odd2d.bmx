@@ -1,4 +1,4 @@
-Strict
+SuperStrict
 
 Rem
 bbdoc: Graphics/Direct3D9 Odd2D
@@ -87,16 +87,28 @@ Type TD3D9Odd2DDriver Extends TOdd2DDriver
 	
 '	Method GraphicsModes:TGraphicsMode[]() Abstract
 	
-	Method AttachGraphics:TMax2DGraphics( widget:Byte Ptr, flags:Int )
+	Method AttachGraphics:TMax2DGraphics( widget:Byte Ptr, flags:Long )
 		Local g:TD3D9Graphics=D3D9GraphicsDriver().AttachGraphics( widget,flags )
 		If g Return TMax2DGraphics.Create( g,Self )
 	End Method
 	
-	Method CreateGraphics:TGraphics( width:Int, height:Int ,depth:Int, hertz:Int, flags:Int, x:Int, y:Int )
+	Method CreateGraphics:TGraphics( width:Int, height:Int ,depth:Int, hertz:Int, flags:Long, x:Int, y:Int )
 		Local g:TD3D9Graphics=D3D9GraphicsDriver().CreateGraphics( width,height,depth,hertz,flags,x,y )
 		If g Return TMax2DGraphics.Create( g,Self )
 	End Method
-	
+
+	Method CreateRenderImageFrame:TImageFrame(width:UInt, height:UInt, flags:Int)
+		' TODO
+	End Method
+
+	Method SetBackBuffer()
+		' TODO
+	End Method
+
+	Method SetRenderImageFrame(RenderImageFrame:TImageFrame)
+		' TODO
+	End Method
+
 	Method SetGraphics( g:TGraphics )
 		Super.SetGraphics g
 		If g Then _d3dDev=TD3D9Graphics(TMax2DGraphics(g)._graphics).GetDirect3DDevice()
@@ -142,6 +154,9 @@ Type TD3D9Odd2DDriver Extends TOdd2DDriver
 		TOD3D9ImageFrame(iframe).DrawPoly xyuv,handlex,handley,originx,originy
 	End Method
 
+	Method ToString:String()
+		Return "Direct3D9 Odd2D Driver"
+	End Method
 End Type
 
 Rem

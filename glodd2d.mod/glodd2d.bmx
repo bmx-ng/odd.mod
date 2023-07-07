@@ -1,4 +1,4 @@
-Strict
+SuperStrict
 
 Rem
 bbdoc: Graphics/OpenGL Odd2D
@@ -77,16 +77,28 @@ Type TGLOdd2DDriver Extends TOdd2DDriver
 	
 '	Method GraphicsModes:TGraphicsMode[]() Abstract
 	
-	Method AttachGraphics:TMax2DGraphics( widget:Byte Ptr, flags:Int )
+	Method AttachGraphics:TMax2DGraphics( widget:Byte Ptr, flags:Long )
 		Local g:TGLGraphics=GLGraphicsDriver().AttachGraphics( widget,flags )
 		If g Return TMax2DGraphics.Create( g,Self )
 	End Method
 	
-	Method CreateGraphics:TGraphics( width:Int, height:Int ,depth:Int, hertz:Int, flags:Int, x:Int, y:Int )
+	Method CreateGraphics:TGraphics( width:Int, height:Int ,depth:Int, hertz:Int, flags:Long, x:Int, y:Int )
 		Local g:TGLGraphics=GLGraphicsDriver().CreateGraphics( width,height,depth,hertz,flags,x,y )
 		If g Return TMax2DGraphics.Create( g,Self )
 	End Method
 	
+	Method CreateRenderImageFrame:TImageFrame(width:UInt, height:UInt, flags:Int)
+		' TODO
+	End Method
+
+	Method SetBackBuffer()
+		' TODO
+	End Method
+
+	Method SetRenderImageFrame(RenderImageFrame:TImageFrame)
+		' TODO
+	End Method
+
 '	Method SetGraphics( g:TGraphics ) Abstract
 	
 '	Method Flip( sync ) Abstract
@@ -128,6 +140,9 @@ Type TGLOdd2DDriver Extends TOdd2DDriver
 		TOGLImageFrame(iframe).DrawPoly xyuv,handlex,handley,originx,originy
 	End Method
 
+	Method ToString:String()
+		Return "OpenGL Odd2D Driver"
+	End Method
 End Type
 
 Rem

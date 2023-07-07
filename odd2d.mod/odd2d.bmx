@@ -1,4 +1,4 @@
-Strict
+SuperStrict
 
 Rem
 bbdoc: Graphics/Odd2D
@@ -43,7 +43,7 @@ Type TOdd2DDriver Extends TMax2DDriver
 	Field adj_vp_x:Int, adj_vp_y:Int, adj_vp_width:Int, adj_vp_height:Int
 	
 	Field m2d_blend:Int, m2d_alpha:Float, m2d_linewidth:Float
-	Field m2d_clsred:Int, m2d_clsgreen:Int, m2d_clsblue:Int
+	Field m2d_clsred:Int, m2d_clsgreen:Int, m2d_clsblue:Int,m2d_clsalpha:Float
 	Field m2d_red:Int, m2d_green:Int, m2d_blue:Int
 	Field m2d_ix:Float, m2d_iy:Float, m2d_jx:Float, m2d_jy:Float
 	
@@ -61,7 +61,7 @@ Type TOdd2DDriver Extends TMax2DDriver
 		_odd2dDriver=TOdd2DDriver(_max2dDriver)
 	End Method
 	
-	Method Flip( sync:Int )
+	Method Flip:Int( sync:Int )
 		ClearBorder
 		_m2ddriver.Flip sync
 	End Method
@@ -83,9 +83,9 @@ Type TOdd2DDriver Extends TMax2DDriver
 		_m2dDriver.SetColor red,green,blue
 	End Method
 	
-	Method SetClsColor( red:Int, green:Int, blue:Int )
-		m2d_clsred=red;m2d_clsgreen=green;m2d_clsblue=blue
-		_m2dDriver.SetClsColor red,green,blue
+	Method SetClsColor( red:Int, green:Int, blue:Int, alpha:Float )
+		m2d_clsred=red;m2d_clsgreen=green;m2d_clsblue=blue;m2d_clsalpha=alpha
+		_m2dDriver.SetClsColor red,green,blue,alpha
 	End Method
 	
 	Method SetViewport( x:Int, y:Int, width:Int, height:Int )
@@ -162,7 +162,7 @@ Type TOdd2DDriver Extends TMax2DDriver
 		SetScale sclx,scly
 	End Method
 	
-	Method DrawPoly( xy#[],handlex#,handley#,originx#,originy# )
+	Method DrawPoly( xy#[],handlex#,handley#,originx#,originy#, indices:Int[] )
 		Local rot:Float=GetRotation()
 		Local sclx:Float,scly:Float
 		GetScale sclx,scly
@@ -172,7 +172,7 @@ Type TOdd2DDriver Extends TMax2DDriver
 		originx:+focus_x+border_x
 		originy:+focus_y+border_y
 		
-		_m2dDriver.DrawPoly xy,handlex,handley,originx,originy
+		_m2dDriver.DrawPoly xy,handlex,handley,originx,originy,indices
 		
 		SetRotation rot
 		SetScale sclx,scly
@@ -329,7 +329,7 @@ Type TOdd2DDriver Extends TMax2DDriver
 		m2d_blend=MASKBLEND
 		m2d_alpha=1
 		m2d_linewidth=1
-		m2d_clsred=0;m2d_clsgreen=0;m2d_clsblue=0
+		m2d_clsred=0;m2d_clsgreen=0;m2d_clsblue=0;m2d_clsalpha=1
 		m2d_red=255;m2d_green=255;m2d_blue=255
 	End Method
 
