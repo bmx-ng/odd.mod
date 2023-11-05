@@ -111,7 +111,7 @@ Type TD3D9Odd2DDriver Extends TOdd2DDriver
 
 	Method SetGraphics( g:TGraphics )
 		Super.SetGraphics g
-		If g Then _d3dDev=TD3D9Graphics(TMax2DGraphics(g)._graphics).GetDirect3DDevice()
+		If g Then _d3dDev=TD3D9Graphics(TMax2DGraphics(g)._backendGraphics).GetDirect3DDevice()
 	End Method
 	
 '	Method Flip( sync ) Abstract
